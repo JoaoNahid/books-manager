@@ -53,7 +53,14 @@ Agora inicie o container
 sail up -d
 ```
 
-## Passo 5: Banco de dados
+
+## Passo 5: Rodar dependencias do frontend
+Rode as migrations e popule o banco:
+```bash
+npm install
+```
+
+## Passo 6: Banco de dados
 
 Rode as migrations e popule o banco:
 ```bash
