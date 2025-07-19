@@ -16,7 +16,7 @@ return new class extends Migration
                 $table->id();
                 $table->string('name', 255)->nullable(false);
                 $table->longText('description')->nullable(false);
-                $table->dateTime('publish_data')->nullable(false);
+                $table->date('published_at')->nullable(false);
                 $table->unsignedBigInteger('author_id');
                 $table->foreign('author_id')->references('id')->on('authors')->restrictOnDelete();
                 $table->timestamps();
