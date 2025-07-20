@@ -11,6 +11,7 @@ class Book extends Model
         'description',
         'published_at',
         'author_id',
+        'image'
     ];
 
     protected $casts = [

@@ -101,7 +101,7 @@
                     </button>
                 </div>
 
-                <form wire:submit.prevent="save">
+                <form wire:submit.prevent="save" enctype="multipart/form-data">
                     <input type="hidden" wire:model="book_id" />
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="md:col-span-2">
@@ -111,6 +111,7 @@
                                 wire:model="name"
                                 class="w-full px-3 py-2 border border-zinc-200 dark:border-zinc-700 rounded-md"
                             />
+                            @error('name') <span class="error text-red-600">{{ $message }}</span> @enderror
                         </div>
 
                         <div>
@@ -124,6 +125,7 @@
                                     <option value="{{ $author->id }}" class="bg-zinc-50 dark:bg-zinc-900">{{ $author->name }}</option>
                                 @endforeach
                             </select>
+                            @error('author_id') <span class="error text-red-600">{{ $message }}</span> @enderror
                         </div>
 
                         <div>
@@ -133,6 +135,22 @@
                                 wire:model="published_at"
                                 class="w-full px-3 py-2 border border-zinc-200 dark:border-zinc-700 rounded-md"
                             />
+                            @error('published_at') <span class="error text-red-600">{{ $message }}</span> @enderror
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-zinc-500 dark:text-white/80 mb-2">Capa do livro *</label>
+                            <input 
+                                type="file" 
+                                wire:model="fileUpload"
+                                class="w-full px-3 py-2 border border-zinc-200 dark:border-zinc-700 rounded-md"
+                            />
+                            @error('fileUpload') <span class="error text-red-600">{{ $message }}</span> @enderror
+                            @if ($image)
+                                <div class="mt-2">
+                                    <img src="{{ asset('storage/' . $image) }}" alt="Capa do livro" class="w-32 h-32 object-cover rounded-md">
+                                </div>
+                            @endif
                         </div>
 
                         <div class="md:col-span-2">
@@ -142,6 +160,8 @@
                                 rows="3"
                                 class="w-full px-3 py-2 border border-zinc-200 dark:border-zinc-700 rounded-md"
                             ></textarea>
+                            @error('description') <span class="error text-red-600">{{ $message }}</span> @enderror
+
                         </div>
                     </div>
 
