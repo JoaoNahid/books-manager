@@ -12,6 +12,7 @@ Route::get('/user', function (Request $request) {
 
 Route::middleware([ApiAccess::class])->group(function () {
     Route::controller(AuthorsController::class)->group(function () {
+        Route::get('/author/books/{id}', 'getAuthorBooks');
         Route::get('/authors/{id?}', 'getAuthors');
         Route::post('/authors', 'store');
         Route::put('/author/{id}', 'update');

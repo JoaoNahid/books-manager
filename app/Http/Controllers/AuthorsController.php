@@ -28,6 +28,27 @@ class AuthorsController extends Controller {
     }
 
     /**
+     * Get books by author ID.
+     *
+     * @param int $authorId
+     * @return JsonResponse
+     */
+    public function getAuthorBooks($authorId): JsonResponse {
+        $author = Author::find($authorId);
+        if (!$author) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Author not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $author->books->toArray()
+        ]);
+    }
+
+    /**
      * Store a new author.
      *
      * @param Request $request
