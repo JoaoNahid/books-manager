@@ -5,7 +5,6 @@ namespace App\Livewire;
 use App\Http\Requests\BookRequest;
 use App\Models\Author;
 use App\Models\Book;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -15,9 +14,9 @@ class Books extends Component {
 
     protected $showModal = false;
     protected $editMode = false;
-    protected $bookId = null;
-
+    
     //Form fields
+    public $book_id;
     public $name;
     public $description;
     public $published_at;
@@ -42,7 +41,7 @@ class Books extends Component {
     public function edit($bookId) {
         $book = Book::findOrFail($bookId);
 
-        $this->bookId = $book->id;
+        $this->book_id = $book->id;
         $this->name = $book->name;
         $this->description = $book->description;
         $this->published_at = $book->published_at;
@@ -52,7 +51,6 @@ class Books extends Component {
         $this->showModal = true;
     }
 
-    // TODO: Fix the update logic. When try to update, a new registeris being created instead of updating the existing one.
     public function save() {
         // Get validation rules and messages
         $bookRequest = new BookRequest();
@@ -68,11 +66,11 @@ class Books extends Component {
         }
 
         Book::updateOrCreate(
-            ['id' => $this->bookId],
+            ['id' => $this->book_id],
             $validatedData->validated()
         );
 
-        session()->flash('message', $this->editMode ? 'Livro atualizado com sucesso.' : 'Livro criado com sucesso.');
+        session()->flash('message', 'Operação realizada com sucesso.');
     }
 
     public function delete($bookId) {
@@ -97,7 +95,7 @@ class Books extends Component {
     }
 
     private function clearFormFields(): void {
-        $this->bookId = null;
+        $this->book_id = '';
         $this->name = '';
         $this->description = '';
         $this->published_at = '';

@@ -102,7 +102,7 @@
                 </div>
 
                 <form wire:submit.prevent="save">
-                    <input type="hidden" name="book_id" wire:model="bookId">
+                    <input type="hidden" wire:model="book_id" />
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="md:col-span-2">
                             <label class="block text-sm font-medium text-zinc-500 dark:text-white/80 mb-2">Título *</label>
