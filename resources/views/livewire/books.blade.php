@@ -40,7 +40,7 @@
             </thead>
             <tbody class="border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 divide-y divide-gray-200">
                 @forelse($books as $book)
-                    <tr class="hover:bg-gray-50">
+                    <tr>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="text-sm text-left font-medium text-zinc-500 dark:text-white/80">{{ $book->name }}</div>
                         </td>
@@ -131,7 +131,7 @@
                             <input 
                                 type="date" 
                                 wire:model="published_at"
-                                class="w-full px-3 py-2 border border border-zinc-200 dark:border-zinc-700 rounded-md"
+                                class="w-full px-3 py-2 border border-zinc-200 dark:border-zinc-700 rounded-md"
                             />
                         </div>
 
@@ -140,7 +140,7 @@
                             <textarea 
                                 wire:model="description"
                                 rows="3"
-                                class="w-full px-3 py-2 border border border-zinc-200 dark:border-zinc-700 rounded-md"
+                                class="w-full px-3 py-2 border border-zinc-200 dark:border-zinc-700 rounded-md"
                             ></textarea>
                         </div>
                     </div>
