@@ -45,7 +45,7 @@
                             <div class="text-sm text-left font-medium text-zinc-500 dark:text-white/80">{{ $book->name }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-zinc-500 dark:text-white/80">{{ $book->author->name }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-900">{{ $book->published_at->format('d/m/Y') ?? '-' }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-zinc-500 dark:text-white/80">{{ $book->published_at->format('d/m/Y') }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-right font-medium">
                             <button 
                                 wire:click="edit({{ $book->id }})"
