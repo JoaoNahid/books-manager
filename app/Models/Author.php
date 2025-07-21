@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Log as ModelsLog;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -31,7 +32,7 @@ class Author extends Model
             $author = self::updateOrCreate( ['id' => $data['id'] ?? null], $data );
             return $author;
         } catch (\Exception $exception) {
-            Log::error('Failed to create or update author: ' . $exception->getMessage());
+            ModelsLog::createLog($exception->getMessage());
             return false;
         }
 
