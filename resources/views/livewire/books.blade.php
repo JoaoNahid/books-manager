@@ -139,7 +139,7 @@
                         </div>
 
                         <div class="md:col-span-2">
-                            <label class="block text-sm font-medium text-zinc-500 dark:text-white/80 mb-2">Capa do livro *</label>
+                            <label class="block text-sm font-medium text-zinc-500 dark:text-white/80 mb-2">Capa do livro</label>
                             <input 
                                 type="file" 
                                 wire:model="fileUpload"
