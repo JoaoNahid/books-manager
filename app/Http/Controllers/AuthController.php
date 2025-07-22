@@ -23,7 +23,7 @@ class AuthController extends Controller {
             ]);
         }
         Log::createLog('User logged in: ' . Auth::user()->id);
-        return redirect()->intended(route('books.index'))->with('success', 'Login realizado com sucesso!');
+        return redirect()->intended(route('dashboard'))->with('success', 'Login realizado com sucesso!');
 
     }
 
@@ -42,7 +42,7 @@ class AuthController extends Controller {
         Auth::login($user);
         Log::createLog('User registered and logged in: ' . $user->id);
 
-        return redirect()->intended(route('books.index'))->with('success', 'Registration realizado com sucesso!');
+        return redirect()->intended(route('dashboard'))->with('success', 'Registro realizado com sucesso!');
         
     }
 }
