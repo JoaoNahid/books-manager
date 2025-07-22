@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BooksController;
 use App\Http\Middleware\CheckAdmin;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,11 +29,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 
+    Route::get('dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+
     Route::middleware([CheckAdmin::class])->group(function () {
         Route::controller(BooksController::class)->group(function() {
             Route::get('books', 'index')->name('books.index');
         });
     });
 });
-
-require __DIR__.'/auth.php';
