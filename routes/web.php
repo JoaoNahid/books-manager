@@ -11,9 +11,14 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+
+Route::controller(AuthController::class)->group(function () {
+    Route::get('login', 'getLogin')->name('auth.getLogin');
+    Route::post('login', 'postLogin')->name('auth.postLogin');
+
+    Route::get('register', 'getRegister')->name('auth.getRegister');
+    Route::post('register', 'postRegister')->name('auth.postRegister');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
