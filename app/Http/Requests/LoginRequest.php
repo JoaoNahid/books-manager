@@ -23,7 +23,21 @@ class LoginRequest extends FormRequest
     {
         return [
             'email' => 'required|email|exists:users,email|max:255',
-            'password' => 'required|string|min:8|max:255',
+            'password' => 'required|string',
+        ];
+    }
+
+    /**
+     * Get custom messages for validator errors.
+     */
+    public function messages(): array
+    {
+        return [
+            'email.required' => 'O email é obrigatório.',
+            'email.exists' => 'Email não encontrado.',
+            'email.email' => 'O email deve ser um endereço de email válido.',
+
+            'password.required' => 'A senha é obrigatória.'
         ];
     }
 }
