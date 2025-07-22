@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class BooksController extends Controller
 {
     public function index() {
-        return view('admin.books.list')->with([
+        return Inertia::render('Books/Index', [
             'books' => Book::all()
         ]);
     }
