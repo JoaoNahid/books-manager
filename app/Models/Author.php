@@ -35,6 +35,12 @@ class Author extends Model
             ModelsLog::createLog($exception->getMessage());
             return false;
         }
+    }
 
+    public static function getActiveAuthors() {
+        return self::query()
+            ->where('active', true)
+            ->orderBy('name')
+            ->get();
     }
 }
