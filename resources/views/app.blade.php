@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Book Manager</title>
     @vite('resources/js/app.js')
+    @vite('resources/css/app.css')
     @inertiaHead
 </head>
-<body>
+<body class="bg-gray-900">
     @inertia
 </body>
 </html>
