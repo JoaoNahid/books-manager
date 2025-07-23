@@ -52,7 +52,6 @@ const form = useForm<BookFormProps>({
 const formatDate = (date) => {
     return (new Date(date)).toISOString().split('T')[0];
 }
-
 watchEffect(() => {
     if (props.book) {
         form.id = props.book.id
@@ -107,7 +106,7 @@ const getImageUrl = (path: string | null) => {
                                 <FormControl>
                                     <Input type="text" v-model="form.name" placeholder="Título do livro" />
                                 </FormControl>
-                                <InputError v-if="form.errors.name" :text="form.errors.name" />
+                                <InputError v-if="form.errors['name']" :text="form.errors['name']" />
                             </FormItem>
                         </FormField>
                     </div>
@@ -132,7 +131,7 @@ const getImageUrl = (path: string | null) => {
                                             </SelectGroup>
                                         </SelectContent>
                                     </Select>
-                                    <InputError v-if="form.errors.author_id" :text="form.errors.author_id" />
+                                    <InputError v-if="form.errors['author_id']" :text="form.errors['author_id']" />
                                 </FormControl>
                             </FormItem>
                         </FormField>
@@ -143,7 +142,7 @@ const getImageUrl = (path: string | null) => {
                                 <FormControl>
                                     <Input type="date" v-model="form.published_at"/>
                                 </FormControl>
-                                <InputError v-if="form.errors.published_at" :text="form.errors.published_at" />
+                                <InputError v-if="form.errors['published_at']" :text="form.errors['published_at']" />
                             </FormItem>
                         </FormField>
                     </div>
@@ -171,7 +170,7 @@ const getImageUrl = (path: string | null) => {
                                               rows="3"
                                               class="w-full px-3 py-2 border border-zinc-200 dark:border-zinc-700 rounded-md"></textarea>
                                 </FormControl>
-                                <InputError v-if="form.errors.description" :text="form.errors.description" />
+                                <InputError v-if="form.errors['description']" :text="form.errors['description']" />
                             </FormItem>
                         </FormField>
                     </div>
