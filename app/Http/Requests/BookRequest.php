@@ -26,7 +26,7 @@ class BookRequest extends FormRequest
             'description' => 'required|string',
             'published_at' => 'required|date',
             'author_id' => 'required|exists:authors,id',
-            'image' => 'nullable|image|mimes:jpg,png|max:2048',
+            'file' => 'nullable|image|mimes:jpg,png|max:2048',
             'id' => 'nullable|exists:books,id'
         ];
     }
@@ -47,9 +47,9 @@ class BookRequest extends FormRequest
             'author_id.required' => 'O autor é obrigatório.',
             'author_id.exists' => 'O autor informado não existe.',
 
-            'image.image' => 'O arquivo deve ser uma imagem.',
-            'image.mimes' => 'O arquivo deve ser uma imagem JPG ou PNG.',
-            'image.max' => 'A imagem deve ter no máximo 2MB.',
+            'file.image' => 'O arquivo deve ser uma imagem.',
+            'file.mimes' => 'O arquivo deve ser uma imagem JPG ou PNG.',
+            'file.max' => 'A imagem deve ter no máximo 2MB.',
         ];
     }
 }

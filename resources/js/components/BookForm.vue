@@ -46,7 +46,7 @@ const form = useForm<BookFormProps>({
     description: '',
     published_at: '',
     author_id: null,
-    image: null,
+    file: null,
 })
 
 const formatDate = (date) => {
@@ -60,7 +60,6 @@ watchEffect(() => {
         form.description = props.book.description
         form.published_at = formatDate(props.book.published_at)
         form.author_id = props.book.author.id
-        form.image = props.book.image
     }
 })
 
@@ -154,9 +153,9 @@ const getImageUrl = (path: string | null) => {
                             <FormItem>
                                 <FormLabel>Capa do Livro</FormLabel>
                                 <FormControl>
-                                    <Input type="file" @change="e => form.image = e.target.files[0]" />
+                                    <Input type="file" @change="e => form.file = e.target.files[0]" />
                                 </FormControl>
-                                <InputError v-if="form.errors.image" :text="form.errors.image" />
+                                <InputError v-if="form.errors['file']" :text="form.errors['file']" />
                             </FormItem>
                             <img v-if="book?.image" :src="getImageUrl(book.image)" alt="">
                         </FormField>
