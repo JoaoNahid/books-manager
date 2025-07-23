@@ -28,13 +28,12 @@ class Book extends Model
 
     public static function post($data): self|false {
         try {
-            if (isset($data['image'])) {
-                $uploadedImage = FileUpload::uploadImage($data['image']);
-                unset($data['image']);
-            }
             $book = self::query()->updateOrCreate(['id' => $data['id'] ?? null], $data);
-            if ($book && $book->image) {
-                FileUpload::deleteImage($book->image);
+            if (isset($data['file'])) {
+                $uploadedImage = FileUpload::uploadImage($data['file']);
+                if ($book->image) {
+                    FileUpload::deleteImage($book->image);
+                }
                 $book->image = $uploadedImage;
                 $book->save();
             }
