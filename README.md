@@ -58,6 +58,7 @@ sail up -d
 Rode as migrations e popule o banco:
 ```bash
 npm install
+npm run dev
 ```
 
 ## Passo 6: Banco de dados
@@ -65,4 +66,63 @@ npm install
 Rode as migrations e popule o banco:
 ```bash
 sail artisan:migrate --seed
+```
+
+## Acessando o sistema
+
+Para acessar o sistema existem dois tipos de usuários:
+#### Admin
+```bash
+admin@example.com
+password
+```
+
+#### Usuário comum - não consegue criar livros
+```bash
+user@example.com
+password
+```
+
+
+# Api gerenciamento de autores
+
+Para as requisições é necessário adicionar um bearer token no header da request
+```bash
+Bearer srj2J53WxAvEsyV5HDjJsvDavqc19YQw
+```
+
+## Rotas
+### GET
+#### authors
+```bash
+http://localhost/api/authors/{author_id?}
+```
+#### author books
+```bash
+http://localhost/api/author/books/{author_id}
+```
+
+### POST
+```bash
+http://localhost/api/authors
+```
+#### body parameters
+```bash
+name: required string
+active: required boolean
+```
+
+### PUT
+```bash
+http://localhost/api/author/{author_id}
+```
+#### body parameters
+```bash
+name: optional string
+active: optional boolean
+```
+
+### DELETE
+```bash
+http://localhost/api/author/{author_id}
 ```
