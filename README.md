@@ -93,8 +93,13 @@ Bearer srj2J53WxAvEsyV5HDjJsvDavqc19YQw
 
 ## Rotas
 ### GET
+#### authors
 ```bash
 http://localhost/api/authors/{author_id?}
+```
+#### author books
+```bash
+http://localhost/api/author/books/{author_id}
 ```
 
 ### POST
