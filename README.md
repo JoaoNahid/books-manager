@@ -84,11 +84,40 @@ password
 ```
 
 
-## Api gerenciamento de autores
+# Api gerenciamento de autores
 
-Para as requisições é necessario adicionar um bearer token no header da request
+Para as requisições é necessário adicionar um bearer token no header da request
 ```bash
 Bearer srj2J53WxAvEsyV5HDjJsvDavqc19YQw
 ```
 
-Rotas para teste no Postman: https://.postman.co/workspace/My-Workspace~e6c2a400-3fe5-4057-81a0-7b4dd92cedd4/collection/33619549-276484a1-cf2d-4f8e-9796-3f6b3e2be988?action=share&creator=33619549&active-environment=33619549-1f6d857b-9ad9-4376-b341-db1927330d35
+## Rotas
+### GET
+```bash
+http://localhost/api/authors/{author_id?}
+```
+
+### POST
+```bash
+http://localhost/api/authors
+```
+#### body parameters
+```bash
+name: required string
+active: required boolean
+```
+
+### PUT
+```bash
+http://localhost/api/author/{author_id}
+```
+#### body parameters
+```bash
+name: optional string
+active: optional boolean
+```
+
+### DELETE
+```bash
+http://localhost/api/author/{author_id}
+```
