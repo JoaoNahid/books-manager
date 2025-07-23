@@ -12,7 +12,7 @@ export interface BookFormProps {
     name: string;
     author_id: number;
     published_at: Date | string;
-    image: string;
+    file: File;
     [key: string]: any
 }
 
