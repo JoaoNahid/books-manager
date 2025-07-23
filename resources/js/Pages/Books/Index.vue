@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/table'
 import { toast, Toaster } from 'vue-sonner';
 import BookForm from '@/components/BookForm.vue';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { Book, Author } from '@/types';
 
 const page = usePage<{
@@ -25,7 +25,7 @@ const page = usePage<{
     authors: Author[];
 }>();
 
-const books = page.props.books;
+const books = computed(() => page.props.books);
 const authors = page.props.authors;
 
 const selectedBook = ref<Book | null>(null);
