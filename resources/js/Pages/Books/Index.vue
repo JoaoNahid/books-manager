@@ -13,7 +13,7 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table'
-import { toast, Toaster } from 'vue-sonner';
+import { toast } from 'vue-sonner';
 import BookForm from '@/components/BookForm.vue';
 import { computed, ref } from 'vue';
 import { Book, Author } from '@/types';
@@ -62,7 +62,6 @@ const handleViewBook = (book?: Book) => {
 <template>
     <Dashboard title="Livros">
         <BookForm :book="selectedBook" :authors="authors" v-model:isVisible="isModalVisible" @update:isVisible="isModalVisible = $event" />
-        <Toaster richColors closeButton position="top-right" :duration="5000" />
         <div class="w-full flex justify-end align-middle">
             <Button 
                 @click="handleViewBook()"
