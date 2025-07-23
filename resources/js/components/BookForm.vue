@@ -71,11 +71,12 @@ const submit = () => {
     });
 }
 
-const closeModal = () => {
-    form.reset()
-    emit('update:isVisible', false)
+const toggleModal = (val) => {
+    if (!val) {
+        form.reset()
+    }
+    emit('update:isVisible', val)
 }
-
 
 const getImageUrl = (path: string | null) => {
     return path ? `/storage/${path}` : null;
@@ -85,7 +86,7 @@ const getImageUrl = (path: string | null) => {
 
 <template>
     <Form as="" enctype="multipart/form-data">
-        <Dialog :open="props.isVisible" @update:open="(val) => emit('update:isVisible', val)">
+        <Dialog :open="props.isVisible" @update:open="(val) => toggleModal(val)">
             <DialogContent class="sm:max-w-[425px]">
                 <DialogHeader>
                     <DialogTitle>{{ props.book ? 'Editar' : 'Adicionar' }} Livro</DialogTitle>
@@ -172,7 +173,7 @@ const getImageUrl = (path: string | null) => {
                 </form>
 
                 <DialogFooter>
-                    <Button class="bg-zinc-500 dark:bg-zinc-700" @click="closeModal">
+                    <Button class="bg-zinc-500 dark:bg-zinc-700" @click="toggleModal(false)">
                         Cancelar
                     </Button>
                     <Button type="submit" @click="submit" form="dialogForm">
