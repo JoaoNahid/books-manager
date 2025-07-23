@@ -34,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware([CheckAdmin::class])->group(function () {
         Route::controller(BooksController::class)->group(function() {
             Route::get('books', 'index')->name('books.index');
+            Route::delete('book/{id}', 'deleteBook')->name('books.delete');
+            Route::post('book/', 'store')->name('books.store');
         });
     });
 });
