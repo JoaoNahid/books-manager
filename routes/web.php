@@ -9,7 +9,7 @@ use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', AuthController::class . '@getLogin');
+Route::get('/', AuthController::class . '@getLogin')->name('login');
 
 
 Route::controller(AuthController::class)->group(function () {
