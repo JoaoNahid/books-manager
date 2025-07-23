@@ -1,18 +1,20 @@
 <script setup>
-import VersionSwitcher from '@/components/VersionSwitcher.vue';
-
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
 } from '@/components/ui/sidebar';
+import SidebarFooter from './ui/sidebar/SidebarFooter.vue';
+import Button from './ui/button/Button.vue';
+import { LogOut } from 'lucide-vue-next';
+import { toast } from 'vue-sonner';
+import { router } from '@inertiajs/vue3';
 
 const props = defineProps({
   side: { type: String, required: false },
@@ -20,6 +22,12 @@ const props = defineProps({
   collapsible: { type: String, required: false },
   class: { type: null, required: false },
 });
+
+const logout = () => {
+  router.post('/logout', {
+    onSuccess: () => toast.success('Deslogado do sistema!')
+  })
+}
 
 // This is sample data.
 const data = {
@@ -62,6 +70,12 @@ const data = {
         </SidebarGroupContent>
       </SidebarGroup>
     </SidebarContent>
+    <SidebarFooter>
+      <Button @click="logout" variant="ghost" class="cursor-pointer justify-start rounded">
+          <LogOut />
+          Sair
+      </Button>
+    </SidebarFooter>
     <SidebarRail />
   </Sidebar>
 </template>

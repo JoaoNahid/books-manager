@@ -18,6 +18,8 @@ Route::controller(AuthController::class)->group(function () {
 
     Route::get('register', 'getRegister')->name('auth.getRegister');
     Route::post('register', 'postRegister')->name('auth.postRegister');
+
+    Route::post('/logout', 'logout')->name('auth.logout');
 });
 
 Route::middleware(['auth'])->group(function () {

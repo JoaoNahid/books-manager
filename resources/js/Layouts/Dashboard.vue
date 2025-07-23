@@ -14,12 +14,14 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
+import Button from '@/components/ui/button/Button.vue'
 import { Separator } from '@/components/ui/separator'
 import {
     SidebarInset,
     SidebarProvider,
     SidebarTrigger,
 } from '@/components/ui/sidebar'
+import { LogOut } from 'lucide-vue-next'
 import { Toaster } from 'vue-sonner'
 
 defineProps({

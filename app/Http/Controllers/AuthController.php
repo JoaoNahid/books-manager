@@ -43,6 +43,13 @@ class AuthController extends Controller {
         Log::createLog('User registered and logged in: ' . $user->id);
 
         return redirect()->intended(route('dashboard'))->with('success', 'Registro realizado com sucesso!');
-        
+    }
+
+    public function logout() {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }
