@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BookRequest;
 use App\Models\Author;
 use App\Models\Book;
+use App\Models\FileUpload;
 use Inertia\Inertia;
 
 class BooksController extends Controller
@@ -16,7 +17,6 @@ class BooksController extends Controller
         ]);
     }
 
-    // TODO: arrumar retorno - página precisa recarregar para exibir item recém cadastrado/deletado
     public function store(BookRequest $request) {
         Book::post($request->validated());
         return redirect()->route('books.index');
@@ -24,6 +24,9 @@ class BooksController extends Controller
 
     public function deleteBook($id) {
         $book = Book::findOrFail($id);
+        if ($book->image) {
+            FileUpload::deleteImage($book->image);
+        }
         $book->delete();
 
         return back()->with('success', 'Livro excluído com sucesso!');
