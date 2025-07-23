@@ -7,6 +7,7 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
+    DialogDescription
 } from '@/components/ui/dialog'
 import {
     Form,
@@ -48,12 +49,16 @@ const form = useForm<BookFormProps>({
     image: null,
 })
 
+const formatDate = (date) => {
+    return (new Date(date)).toISOString().split('T')[0];
+}
+
 watchEffect(() => {
     if (props.book) {
         form.id = props.book.id
         form.name = props.book.name
         form.description = props.book.description
-        form.published_at = new Date(props.book.published_at)
+        form.published_at = formatDate(props.book.published_at)
         form.author_id = props.book.author.id
         form.image = props.book.image
     }
@@ -90,6 +95,7 @@ const getImageUrl = (path: string | null) => {
             <DialogContent class="sm:max-w-[425px]">
                 <DialogHeader>
                     <DialogTitle>{{ props.book ? 'Editar' : 'Adicionar' }} Livro</DialogTitle>
+                    <DialogDescription></DialogDescription>
                 </DialogHeader>
 
                 <form enctype="multipart/form-data">
