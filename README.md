@@ -53,19 +53,29 @@ Agora inicie o container
 sail up -d
 ```
 
+## Passo 5: Rodar dependencias do backend
 
-## Passo 5: Rodar dependencias do frontend
+App Key
+```bash
+sail artisan key:generate
+```
+
+Migrations e seeder:
+```bash
+sail artisan:migrate --seed
+```
+
+Storage link:
+```bash
+sail artisan storage:link
+```
+
+
+## Passo 6: Rodar dependencias do frontend
 Rode as migrations e popule o banco:
 ```bash
 npm install
 npm run dev
-```
-
-## Passo 6: Banco de dados
-
-Rode as migrations e popule o banco:
-```bash
-sail artisan:migrate --seed
 ```
 
 ## Acessando o sistema
@@ -125,4 +135,12 @@ active: optional boolean
 ### DELETE
 ```bash
 http://localhost/api/author/{author_id}
+```
+
+
+# Quando mudar para a branch do vue
+
+## Passo 1 - Instalar inertia, caso precise
+```bash
+composer require inertiajs/inertia-laravel
 ```
