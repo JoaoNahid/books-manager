@@ -157,7 +157,7 @@ const getImageUrl = (path: string | null) => {
                                 </FormControl>
                                 <InputError v-if="form.errors['file']" :text="form.errors['file']" />
                             </FormItem>
-                            <img v-if="book?.image" :src="getImageUrl(book.image)" alt="">
+                            <img v-if="props.book?.image" :src="getImageUrl(props.book.image)" alt="">
                         </FormField>
                     </div>
 
